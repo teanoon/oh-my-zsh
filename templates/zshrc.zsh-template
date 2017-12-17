@@ -93,10 +93,3 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias docker-dev="docker-compose -f docker-compose.yml -f docker-compose-dev.yml run --service-ports dev zsh"
-alias docker-ps="docker ps --format \"table {{ .ID }}\\t{{ .Names }}\\t{{ .Status }}\\t{{ .Command }}\\t{{ .Ports }}\""
-alias tldr="docker run --rm -ti teanoon/tldr tldr -t base16"
-q() { docker run --rm -ti -v ${PWD}:/files teanoon/q "$@" }
-q-script() { docker run --rm -ti --entrypoint="/bin/sh" -v ${PWD}:/files teanoon/q -c "$@" }
-aws() { docker run --rm -ti -e https_proxy="172.99.0.1:8118" -v ~/.aws:/home/dev/.aws -v ${PWD}:/files teanoon/awscli "$@" }
-ssvpn() { docker run --rm -ti --dns 172.18.0.2 -v ~/.ssh:/home/dev/.ssh -v ${PWD}:/files teanoon/java-dev "$@" }

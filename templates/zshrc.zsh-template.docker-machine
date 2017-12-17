@@ -1,0 +1,6 @@
+alias docker-dev="docker-compose -f docker-compose.yml -f docker-compose-dev.yml run --rm --service-ports dev zsh"
+alias docker-ps="docker ps --format \"table {{ .ID }}\\t{{ .Names }}\\t{{ .Status }}\\t{{ .Command }}\\t{{ .Ports }}\""
+alias tldr="docker run --rm -ti teanoon/tldr tldr -t base16"
+docker-ip() { docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@" }
+aws() { docker run --rm -ti -e http_proxy="172.98.0.5:8118" -e https_proxy="172.98.0.5:8118" -v ~/.aws:/home/dev/.aws -v ${PWD}:/files teanoon/awscli "$@" }
+ssvpn() { docker run --rm -ti --dns 172.18.0.2 -v ~/.ssh:/home/dev/.ssh -v ${PWD}:/files teanoon/java-dev "$@" }
